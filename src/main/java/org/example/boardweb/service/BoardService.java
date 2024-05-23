@@ -15,4 +15,9 @@ public class BoardService {
     public Iterable<Board> findAll() {
         return boardRepository.findAll();
     }
+
+    @Transactional
+    public void save(Board board) {
+        boardRepository.save(board);
+    }
 }
