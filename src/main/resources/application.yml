@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: boardweb
+
+  datasource:
+    url: jdbc:mysql://localhost:3307/tekitexam
+    username: rjsgud1956
+    password: root1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 80
