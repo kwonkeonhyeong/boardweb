@@ -36,7 +36,7 @@ public class BoardController {
     @GetMapping("/writeform")
     public String addForm(Model model) {
         model.addAttribute("board", new Board());
-        return "boards/writeform";
+        return "boards/writeForm";
     }
 
     @PostMapping("/write")
@@ -60,10 +60,32 @@ public class BoardController {
         return "boards/detail";
     }
 
+    @GetMapping("/updateform")
+    public String updateForm(@RequestParam(name = "id") Long id, Model model) {
+        model.addAttribute("oldBoard",boardService.findById(id));
+        model.addAttribute("newBoard",new Board());
+        return "boards/updateForm";
+    }
+
+    @PostMapping("/update")
+    public String updateBoard(@ModelAttribute Board board) {
+        Board oldBoard = boardService.findById(board.getId());
+        if(oldBoard.getPassword().equals(board.getPassword())) {
+            System.out.println("여기실행");
+            board.setId(oldBoard.getId());
+            board.setCreated_at(oldBoard.getCreated_at());
+            boardService.save(board);
+            return "redirect:/boards/list";
+        }
+        System.out.println("여기요");
+        return "forward:/boards/view?id"+oldBoard.getId();
+    }
+
+
     @GetMapping("/deleteform")
     public String deleteForm(@RequestParam(name = "id") Long id, Model model) {
         model.addAttribute("id", id);
-        return "boards/deleteform";
+        return "boards/deleteForm";
     }
 
     @PostMapping("/delete")
@@ -74,10 +96,11 @@ public class BoardController {
     ) {
         Board board = boardService.findById(id);
         if(board.getPassword().equals(password)) {
-            redirectAttributes.addAttribute("message", "삭제완료");
+            redirectAttributes.addAttribute("message", "success");
             boardService.deleteById(id);
             return "redirect:/boards/list";
         }
+        redirectAttributes.addAttribute("message", "fail");
         return "forward:/boards/view?id="+id;
     }
 }
