@@ -100,7 +100,6 @@ public class BoardController {
             boardService.deleteById(id);
             return "redirect:/boards/list";
         }
-        redirectAttributes.addAttribute("message", "fail");
         return "forward:/boards/view?id="+id;
     }
 }

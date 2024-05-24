@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Delete Board</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/delete.css">
 </head>
 <body>
-<div>
+<div class="delete_main">
     <h1>Delete Board</h1>
     <form th:action="@{/boards/delete}" method="post">
         <input type="hidden" name="id" th:value="${id}">
-        <label for="password"></label>
-        <input type="password" id="password" name="password"/>
-        <input type="submit" value="Delete">
+        <label for="password">Password:</label>
+        <input class="password" type="password" id="password" name="password"/>
+        <input class="delete_btn" type="submit" value="Delete">
     </form>
 </div>
 </body>

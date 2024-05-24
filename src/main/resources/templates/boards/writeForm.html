@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Create a New Board</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/write.css">
 </head>
 <body>
-<h1>Create a New Board</h1>
-<form th:action="@{/boards/write}" method="post" th:object="${board}">
-    <label for="name">Name: </label>
-    <input type="text" id="name" th:field="*{name}" required/>
-    <label for="title">Title: </label>
-    <input type="text" id="title" th:field="*{title}" required/>
-    <label for="content">Content: </label>
-    <input type="text" id="content" th:field="*{content}" required/>
-    <label for="password">Password: </label>
-    <input type="password" id="password" th:field="*{password}" required/>
-    <input type="submit" value="Create">
-</form>
+<div class="write_main">
+    <h1>Create a New Board</h1>
+    <form th:action="@{/boards/write}" method="post" th:object="${board}">
+        <label for="name">Name: </label>
+        <input type="text" id="name" th:field="*{name}" required/>
+        <label for="title">Title: </label>
+        <input type="text" id="title" th:field="*{title}" required/>
+        <label for="content">Content: </label>
+        <textarea id="content" th:field="*{content}" rows="15" required></textarea>
+        <label for="password">Password: </label>
+        <input class="password" type="password" id="password" th:field="*{password}" required/>
+        <input class="submit_btn" type="submit" value="Create">
+    </form>
+</div>
 </body>
 </html>

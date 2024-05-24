@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/detail.css">
 </head>
 <body>
-<div>
+<div class="detail_main">
     <h1 th:text="${board.title}"></h1>
-    <div>
+    <div class="detail_text">
         <strong>Name: </strong> <span th:text="${board.name}"></span>
     </div>
-    <div>
+    <div class="detail_text">
         <strong>Content: </strong> <span th:text="${board.content}"></span>
     </div>
-    <div>
+    <div class="detail_text">
         <strong>Created At: </strong> <span th:text="${#temporals.format(board.created_at,'yyyy/MM/dd HH:mm')}"></span>
     </div>
-    <a th:href="@{/boards/list}">List</a>
-    <a th:href="@{/boards/updateform(id=${board.id})}">Edit</a>
-    <a th:href="@{/boards/deleteform(id=${board.id})}">Delete</a>
-<!--    <div th:if="${message}">-->
-<!--        <span th:text="${message}"></span>-->
-<!--    </div>-->
+    <div class="detail_nav">
+        <a th:href="@{/boards/list}">List</a>
+        <a th:href="@{/boards/updateform(id=${board.id})}">Edit</a>
+        <a th:href="@{/boards/deleteform(id=${board.id})}">Delete</a>
+    </div>
 </div>
 </body>
 </html>

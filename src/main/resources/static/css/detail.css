@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.detail_main {
+    width: 100vw;
+    background-color: #f1f1f1;
+    margin: 5%;
+    padding: 5%;
+    border: solid 1px #D1D1D1;
+    border-radius: 10px;
+}
+
+.detail_text {
+    padding: 5px 0;
+}
+
+.detail_text strong{
+    font-weight: bold;
+}
+
+h1 {
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.detail_nav {
+    padding: 3px 0;
+}
+
+.detail_nav a {
+    padding-right: 5px;
+}
