@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1 th:text="${board.title}"></h1>
+    <div>
+        <strong>Name: </strong> <span th:text="${board.name}"></span>
+    </div>
+    <div>
+        <strong>Content: </strong> <span th:text="${board.content}"></span>
+    </div>
+    <div>
+        <strong>Created At: </strong> <span th:text="${board.created_at}"></span>
+    </div>
+    <a th:href="@{/boards/list}">List</a>
+    <a th:href="@{/boards/updateform(id=${board.id})}">Edit</a>
+    <a th:href="@{/boards/deleteform(id=${board.id})}">Delete</a>
+    <a></a>
+    <a></a>
+</div>
+</body>
+</html>

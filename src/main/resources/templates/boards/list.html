@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Board List</title>
+    <link rel="stylesheet" href="/css/board.css">
 </head>
 <body>
 <h1>Board List</h1>
@@ -19,7 +20,9 @@
     <tr th:each="board : ${boardList}">
         <td th:text="${board.id}"></td>
         <td th:text="${board.name}"></td>
-        <td th:text="${board.title}"></td>
+        <td >
+            <a th:text="${board.title}" th:href="@{/boards/view(id=${board.id})}"></a>
+        </td>
         <td th:text="${#temporals.format(board.created_at,'yyyy-MM-dd')}"></td>
     </tr>
     </tbody>

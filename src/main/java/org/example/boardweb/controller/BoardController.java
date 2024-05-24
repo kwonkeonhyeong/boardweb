@@ -47,4 +47,10 @@ public class BoardController {
         boardService.save(board);
         return "redirect:/boards/list";
     }
+
+    @GetMapping("/view")
+    public String showDetailBoard(@RequestParam(name = "id") Long id, Model model) {
+        model.addAttribute("board",boardService.findById(id));
+        return "boards/detail";
+    }
 }

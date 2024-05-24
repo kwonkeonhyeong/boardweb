@@ -16,10 +16,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class BoardService {
     private final BoardRepository boardRepository;
 
+    @Transactional(readOnly = true)
     public Page<Board> findAll(Pageable pageable) {
         Pageable sortedByDescId = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
                 Sort.by(Direction.DESC, "id"));
         return boardRepository.findAll(sortedByDescId);
+    }
+
+    @Transactional(readOnly = true)
+    public Board findById(Long id) {
+        return boardRepository.findById(id).orElse(null);
     }
 
     @Transactional
