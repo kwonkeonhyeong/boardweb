@@ -53,13 +53,6 @@ public class BoardController {
         return "boards/detail";
     }
 
-
-    @PostMapping("/view")
-    public String showPostDetailBoard(@RequestParam(name = "id") Long id, Model model) {
-        model.addAttribute("board",boardService.findById(id));
-        return "boards/detail";
-    }
-
     @GetMapping("/updateform")
     public String updateForm(@RequestParam(name = "id") Long id, Model model) {
         model.addAttribute("oldBoard",boardService.findById(id));
@@ -71,14 +64,12 @@ public class BoardController {
     public String updateBoard(@ModelAttribute Board board) {
         Board oldBoard = boardService.findById(board.getId());
         if(oldBoard.getPassword().equals(board.getPassword())) {
-            System.out.println("여기실행");
             board.setId(oldBoard.getId());
             board.setCreated_at(oldBoard.getCreated_at());
             boardService.save(board);
             return "redirect:/boards/list";
         }
-        System.out.println("여기요");
-        return "forward:/boards/view?id"+oldBoard.getId();
+        return "redirect:/boards/view?id="+oldBoard.getId();
     }
 
 
@@ -100,6 +91,6 @@ public class BoardController {
             boardService.deleteById(id);
             return "redirect:/boards/list";
         }
-        return "forward:/boards/view?id="+id;
+        return "redirect:/boards/view?id="+id;
     }
 }
