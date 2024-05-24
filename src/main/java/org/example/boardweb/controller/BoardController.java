@@ -53,4 +53,6 @@ public class BoardController {
         model.addAttribute("board",boardService.findById(id));
         return "boards/detail";
     }
+
+
 }
