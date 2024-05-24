@@ -14,7 +14,7 @@
         <strong>Content: </strong> <span th:text="${board.content}"></span>
     </div>
     <div>
-        <strong>Created At: </strong> <span th:text="${board.created_at}"></span>
+        <strong>Created At: </strong> <span th:text="${#temporals.format(board.created_at,'yyyy/MM/dd HH:mm')}"></span>
     </div>
     <a th:href="@{/boards/list}">List</a>
     <a th:href="@{/boards/updateform(id=${board.id})}">Edit</a>
