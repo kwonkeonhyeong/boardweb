@@ -23,5 +23,4 @@ public class Board {
     private String password;
     private String content;
     private LocalDateTime created_at;
-
 }

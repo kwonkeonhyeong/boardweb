@@ -19,8 +19,9 @@
     <a th:href="@{/boards/list}">List</a>
     <a th:href="@{/boards/updateform(id=${board.id})}">Edit</a>
     <a th:href="@{/boards/deleteform(id=${board.id})}">Delete</a>
-    <a></a>
-    <a></a>
+    <div th:if="${message}">
+        <span th:text="${message}"></span>
+    </div>
 </div>
 </body>
 </html>

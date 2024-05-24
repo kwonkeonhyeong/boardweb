@@ -42,7 +42,7 @@
   - 확인 버튼 누르면 `/update`
   
 
--[ ] 게시글 삭제 폼 [ url : `/deleteform?id=아이디` ]
+-[x] 게시글 삭제 폼 [ url : `/deleteform?id=아이디` ]
   - 암호는 글 등록 시 입력했던 암호를 입력해야함
   - `/delete`로 요청 보낸 후 `/list`로 리다이렉트
     

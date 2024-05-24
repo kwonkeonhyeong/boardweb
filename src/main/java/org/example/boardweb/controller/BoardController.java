@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import org.example.boardweb.domain.Board;
 import org.example.boardweb.service.BoardService;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -49,10 +48,36 @@ public class BoardController {
     }
 
     @GetMapping("/view")
-    public String showDetailBoard(@RequestParam(name = "id") Long id, Model model) {
+    public String showGetDetailBoard(@RequestParam(name = "id") Long id, Model model) {
         model.addAttribute("board",boardService.findById(id));
         return "boards/detail";
     }
 
 
+    @PostMapping("/view")
+    public String showPostDetailBoard(@RequestParam(name = "id") Long id, Model model) {
+        model.addAttribute("board",boardService.findById(id));
+        return "boards/detail";
+    }
+
+    @GetMapping("/deleteform")
+    public String deleteForm(@RequestParam(name = "id") Long id, Model model) {
+        model.addAttribute("id", id);
+        return "boards/deleteform";
+    }
+
+    @PostMapping("/delete")
+    public String deleteBoard(
+            @RequestParam(name = "id") Long id,
+            @RequestParam(name = "password") String password,
+            RedirectAttributes redirectAttributes
+    ) {
+        Board board = boardService.findById(id);
+        if(board.getPassword().equals(password)) {
+            redirectAttributes.addAttribute("message", "삭제완료");
+            boardService.deleteById(id);
+            return "redirect:/boards/list";
+        }
+        return "forward:/boards/view?id="+id;
+    }
 }
